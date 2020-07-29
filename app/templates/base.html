@@ -5,7 +5,21 @@
   <title>{% block title %}Reminder{% endblock %} - Reminder</title>
 </head>
 <body>
-  {% block body %}
+  <div>
+    Microblog:
+    <a href="/index">Home</a>
+    <a href="/login">Login</a>
+  </div>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+  {% block content %}
   {% endblock %}
 </body>
 </html>
