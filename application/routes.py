@@ -10,7 +10,8 @@ from werkzeug.urls import url_parse
 @application.route('/index')
 @login_required
 def index():
-    return render_template('main.html', title='Home', posts=posts)
+    posts = Post.query.all()
+    return render_template('index.html', title='Home', posts=posts)
 
 
 @application.route('/login', methods=['GET', 'POST'])
